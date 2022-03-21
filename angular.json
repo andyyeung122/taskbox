@@ -91,6 +91,46 @@
           }
         }
       }
+    },
+    "andy-library": {
+      "projectType": "library",
+      "root": "projects/andy-library",
+      "sourceRoot": "projects/andy-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/andy-library/tsconfig.lib.json",
+            "project": "projects/andy-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/andy-library/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/andy-library/src/test.ts",
+            "tsConfig": "projects/andy-library/tsconfig.spec.json",
+            "karmaConfig": "projects/andy-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/andy-library/tsconfig.lib.json",
+              "projects/andy-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "intro-storybook-angular-template"
